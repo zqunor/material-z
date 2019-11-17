@@ -1,0 +1,105 @@
+<article id="<%= post.layout %>-<%= post.slug %>"
+  class="post white-box article-type-<%= post.layout %>"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+
+	<h2 class="title">
+  	<a href="<%- url_for(post.path) %>">
+    	<%= post.title %>
+    </a>
+	</h2>
+
+	<div class="pagenav">
+		<time>
+			<i class="icon icon-event_available"></i>
+			<%= date(post.date, 'YYYY-MM-DD') %>
+		</time>
+
+		<%- partial('categories',{post:post}) %>
+
+		<div class="pagetags">
+			<i class="icon icon-color-palette" style="margin-right: 2px;"></i>
+			<% if (post.tags && post.tags.length) { %>
+				<% post.tags.forEach(function(item){ %>
+					<a href="<%- url_for(item.path) %>" style="margin-left: 3px;">
+						<%=item.name %>
+					</a>
+				<%})%>
+			<% } else { %>
+				无标签
+			<% } %>
+		</div>
+	</div>
+	</section>
+
+	<% if(post.toc!==false && !(is_current('/about'))){ %>
+	<section class="toc-wrapper"><%- toc(post.content, {list_number: false}) %></section>
+	<% } %>
+
+	<section class="article typo">
+		<div class="article-entry" itemprop="articleBody">
+			<i class="icon icon-lamp"></i>
+			<span class="zhaiyao">摘要</span>
+		<%- post.content %>
+	</div>
+	<% if (is_current('/about')==false) { %>
+		<blockquote class="post-announce">
+			<ul>
+				<li>版权声明:  感谢您的阅读，本文由<a href="/"><%= config.author %></a>版权所有。如若转载，请注明出处。</li>
+				<li>文章标题: <span class"title"><%= post.title %></span></li>
+				<li>文章链接: <a href="<%- url_for(post.path) %>"><%- config.url + post.path %></a></li>
+			</ul>
+		</blockquote>
+	  <% } %>
+
+		<% if(post.prev || post.next){ %>
+			<div class="art-item-footer">
+				<span class="art-item-right">
+					上一篇:
+					<% if(post.prev){ %>
+						<a href="<%=url_for(post.prev.path)%>" rel="prev" title="<%=post.prev.title%>">
+							<%= post.prev.title %>
+							<i class="icon icon-chevron-thin-right"></i>
+						</a>
+					<% } else { %>
+							没有了
+							<i class="icon icon-coffee"></i>
+					<% } %>
+				</span>
+				<br>
+				<span class="art-item-right">
+					下一篇:
+					<% if(post.next){ %>
+						<a href="<%=url_for(post.next.path) %>" rel="next" title="<%=post.next.title %>">
+							<%=post.next.title %>
+							<i class="icon icon-chevron-thin-right"></i>
+						</a>
+					<% } else { %>
+						没有了
+						<i class="icon icon-coffee"></i>
+					<% } %>
+				</span>
+			</div>
+		<%} %>
+
+		<% if (post && theme.recommended_posts.enabled) { %>
+			<%- partial('post/recommended_posts', {page: post, site: site}) %>
+		<% } %>
+		<div class="gotop">
+			<%- partial('_partial/gotop') %>
+		</div>
+	</section>
+
+	<% if (post.comments && config.disqus_shortname){ %>
+		<section id="comments">
+			<div id="disqus_thread"></div>
+		</section>
+	<% } %>
+
+</article>
+<script>
+	window.subData = {
+		title: '<%= post.title %>',
+		tools: true
+	}
+</script>

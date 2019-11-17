@@ -1,0 +1,87 @@
+# Search
+search:
+  enable: true
+  service: hexo # google/hexo/algolia/azure/baidu
+  # google
+  google_api_key:
+  google_engine_id:
+  # algolia
+  algolia_app_id:
+  algolia_api_key:
+  algolia_index_name:
+  # azure
+  azure_service_name:
+  azure_index_name:
+  azure_query_key:
+  # baidu
+  baidu_api_id: fca5b83cf69f752ddc96a61ef64a3659
+
+# friends link
+# links:
+  # - name: ClassicOldSong
+  #   url: https://ccoooss.com
+  # - name: Frantic1048
+  #   url: https://frantic1048.logdown.com/
+  # - name: Hclmaster
+  #   url: https://hclmaster.github.io/
+  # - name: WANG Hsü-Tung
+  #   url: https://whst.github.io/
+
+# navigation menu
+menu:
+  - name: 首页
+    slug: home
+    icon: home
+    url: /
+  - name: 归档
+    slug: archives
+    icon: books
+    url: /archives
+  # - name: Gallery
+  #   slug: gallery
+  #   url: https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN
+  - name: 关于
+    slug: about
+    icon: local_library
+    url: /about
+# menu:
+#   - name: 首页
+#     slug: menu
+#     url: /
+#   - name: 归档
+#     slug: bookmark
+#     url: /archives
+#   # - name: Gallery
+#   #   slug: gallery
+#   #   url: https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN
+#   - name: 关于
+#     slug: user
+#     url: /about
+# widgets
+widgets:
+  - about
+  - categories
+  - tagcloud
+  # - links
+
+# Less
+less:
+  compress: true
+
+# use url, not username
+social:
+- slug: github
+  url: https://github.com/zqunor
+- slug: wikipedia
+  url: https://www.cnblogs.com/zqunor
+- slug: rss
+	url: /atom.xml
+
+toc: true
+
+# 推荐文章 npm install hexo-recommended-posts --save
+recommended_posts:
+  enabled: true
+
+# excerpt:
+#   true

@@ -1,0 +1,19 @@
+<% if (is_home() || is_archive()) { %>
+<% (theme.widgets||[]).forEach(function(name){ %>
+  <%- partial('../_widget/'+name) %>
+<% }) %>
+<% } %>
+
+<% if ( is_category() ) { %>
+    <%- partial('../_widget/categories') %>
+    <%- partial('../_widget/tagcloud') %>
+<% } %>
+
+<% if (is_tag()) { %>
+  <%- partial('../_widget/categories') %>
+  <%- partial('../_widget/tagcloud') %>
+<% } %>
+
+<% if (is_current('/about')) { %>
+  <%- partial('../_widget/about') %>
+<% } %>

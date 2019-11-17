@@ -1,0 +1,161 @@
+.l_main {
+  width: 100%;
+  padding-right: @side-width + @gap*2;
+  float: left;
+//   margin-left: @gap/2;
+//   left: -@gap/2;
+  cursor: url('../fonts/quill.png') 1 30, auto;
+  .post-list {
+    position: relative;
+    columns: 400px;
+    column-gap: 0;
+    margin: -@gap / 2;
+    .post {
+      background: white;
+      &:extend(.z-depth-1);
+    }
+    @media (max-width: @on-phone) {
+      margin: 0;
+    }
+  }
+  #comments {
+    position: relative;
+    padding-top: 1.5 * @gap;
+    background: white;
+    @media (max-width: @on-phone) {
+      padding-top: @gap;
+    }
+  }
+  .post-wrapper {
+    // for firefox
+    column-break-inside: avoid;
+    break-inside: avoid-column;
+  }
+  .mobile-post() {
+    .post {
+      .meta {
+        margin-bottom: @gap;
+        .title {
+          font-size: @article-title-size-sm;
+        }
+      }
+
+      img,
+      .highlight {
+        margin-left: -@gap;
+        margin-right: -@gap;
+        width: ~"calc(100% + 2 * @{gap})";
+        max-width: none;
+        border-radius: 0%;
+      }
+    }
+    .post.reveal {
+      padding: @gap;
+    }
+    .meta.article-type-post {
+      margin: 5px;
+      padding: 5px;
+      font-size: @article-title-size-sm;
+      line-height: @small-font-size;
+    }
+  }
+  .post-wrapper {
+    padding: @gap/2;
+    .full-width {
+      margin-left: -@gap;
+      margin-right: -@gap;
+      padding-left: @gap;
+      padding-right: @gap;
+      width: ~"calc(100% + 2*@{gap})";
+    }
+    .mobile-post();
+    .tags {
+      margin-bottom: -@gap;
+    }
+  }
+  .post {
+    position: relative;
+    margin: 0 auto;
+    .meta {
+      .title {
+        left: 0;
+        font-size: @article-title-size-sm;
+        @media (max-width: @on-phone) {
+          font-size: @article-title-size-sm;
+        }
+        &:before {
+          content: none;
+        }
+        a {
+          display: inline;
+          line-height: 1.25;
+          font-weight: normal;
+          font-weight: bold;
+          color: lighten(@black, 2%);
+          &:hover {
+            color: @accent-color;
+          }
+        }
+      }
+      time,
+      .cats,
+      .pagetags {
+        display: inline-block;
+        font-size: 0.75rem;
+        margin: auto 5px;
+        color: lighten(@grey-color, 5%);
+        :hover {
+          color: @accent-color;
+        }
+        a {
+          color: lighten(@grey-color, 5%);
+        }
+        a:hover {
+          color: @accent-color;
+        }
+      }
+      .pagetags {
+        padding: 0 6px;
+        border-radius: 10%;
+        align-items: center;
+        text-align: center;
+      }
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+  .pagenav {
+    margin: auto 10px;
+  }
+  .time {
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: fade(@grey-color, 25%);
+    font-weight: bold;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  @media (max-width: @on-phone) {
+    padding-right: 0;
+    .post-wrapper {
+      .post.reveal {
+        padding: @gap/2 @gap/2 1.5*@gap/2;
+      }
+      .full-width {
+        margin-left: -@gap/2;
+        width: ~"calc(100% + @{gap})";
+      }
+    }
+    .mobile-post();
+  }
+}

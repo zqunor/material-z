@@ -1,0 +1,15 @@
+.l_side {
+    width: @side-width;
+    float: right;
+    margin-left: -@side-width;
+    @media(max-width: @on-phone) {
+        margin: @gap 0 0;
+        padding: @gap/2;
+        width: 100%;
+        .m_widget {
+            // visibility: hidden;
+            &:extend(.z-depth-1);
+            // box-shadow: 1px 0 3px fade(black, 10%);
+        }
+    }
+}
